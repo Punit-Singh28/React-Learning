@@ -1,0 +1,66 @@
+import React, { useState } from "react";
+import { TodoData } from "../Context/TodoComponentContext";
+
+export const TodoList = () => {
+  const { todo, setTodo } = React.useContext(TodoData);
+  const [editText, setEditText] = useState("");
+
+  const handleDelete = (id) => {
+    setTodo((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const handleEditToggle = (id, currentText) => {
+    setTodo((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, isEdit: !item.isEdit } : item
+      )
+    );
+    setEditText(currentText);
+  };
+
+  const handleSave = (id) => {
+    setTodo((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, text: editText, isEdit: false } : item
+      )
+    );
+    setEditText("");
+  };
+
+  return (
+    <div>
+      <h2>Todo List</h2>
+      {todo.length === 0 ? (
+        <p>No todos yet!</p>
+      ) : (
+        <ul>
+          {todo.map((item) => (
+            <li key={item.id}>
+              {item.isEdit ? (
+                <>
+                  <input
+                    type="text"
+                    value={editText}
+                    onChange={(e) => setEditText(e.target.value)}
+                  />
+                  <button onClick={() => handleSave(item.id)}>Save</button>
+                  <button onClick={() => handleEditToggle(item.id, item.text)}>
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  {item.text}
+                  <button onClick={() => handleEditToggle(item.id, item.text)}>
+                    Edit
+                  </button>
+                  <button onClick={() => handleDelete(item.id)}>Delete</button>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
