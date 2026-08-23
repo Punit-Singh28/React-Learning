@@ -1,5 +1,18 @@
-To work on the Form project, use the branch named Form-working-branch, and to push your updates, kindly use the following command:
+# React-Learning Repository
 
-git add .        ---Adding all the update in project    
-git commit -m "Comment"        ==Add comment of your working
-git push origin Form-working-branch    --Push the code on the branch
+This repository contains my React learning projects.  
+All the necessary code and comments are provided below.
+
+## Working on the Form Project
+To work on the **Form project**, use the branch named **`Form-working-branch`**.  
+When you’re ready to push your updates, follow these steps:
+
+```bash
+# Stage all changes
+git add .
+
+# Commit with a descriptive message
+git commit -m "Your commit message here"
+
+# Push changes to the branch
+git push origin Form-working-branch
