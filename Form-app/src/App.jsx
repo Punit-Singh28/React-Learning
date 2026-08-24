@@ -1,11 +1,10 @@
-import React from 'react'
+import React from "react";
+import { AllRoutes } from "../Routes/AllRoutes";
 
 export const App = () => {
   return (
     <>
-      <h1>Hello World</h1>
-      <h2>Shruti is Dhakan</h2>
+      <AllRoutes />
     </>
-  )
-}
-
+  );
+};
