@@ -1,62 +1,69 @@
-import React from "react";
+import React from 'react';
+import { ApiCall } from '../Api/ServerApi';
 
-export const Form = ({ props, button }) => {
-  const [formData, setFormData] = React.useState({});
+export const Form = ({ fields, button }) => {
+  console.log("🚀 ~ fields:", fields);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  // Initialize formData based on fields
+  const [formData, setFormData] = React.useState(() =>
+    fields.reduce((acc, curr) => {
+      acc[curr.name] = '';
+      return acc;
+    }, {})
+  );
+
+  console.log("🚀 ~ formData:", formData);
+
+  const handleInput = (event) => {
+    const { name, value } = event.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data: ", formData);
+  const handleCall = async () => {
+    try {
+      const res = await ApiCall.post('/user', formData);
+      console.log(res);
+    } catch (err) {
+      console.error("API error:", err);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{
-            display: "flex",
-            marginTop: "15px",
-             gap: "5px",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",}}>
-      {props?.map((el) => (
+    <form>
+      {fields?.map((el, i) => (
         <div
-          key={el.id}
+          key={i}
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            width: "30%",
-            marginBottom: "10px",
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
+            width: '30%',
+            marginBottom: '10px',
           }}
         >
-          {el.name === "gender" ? (
+          {el.name === 'gender' ? (
             <>
               <label>{el.name}</label>
-              <div style={{ display: "flex", gap: "5px" }}>
+              <div style={{ display: 'flex', gap: '5px' }}>
                 <div>
-                  <label htmlFor="male">Male</label>
+                  <label htmlFor="male">male</label>
                   <input
-                    type="radio"
+                    type={el.type}
                     name="gender"
                     value="male"
-                    onChange={handleChange}
+                    onChange={handleInput}
                   />
                 </div>
                 <div>
-                  <label htmlFor="female">Female</label>
+                  <label htmlFor="female">female</label>
                   <input
-                    type="radio"
+                    type={el.type}
                     name="gender"
                     value="female"
-                    onChange={handleChange}
+                    onChange={handleInput}
                   />
                 </div>
               </div>
@@ -67,15 +74,19 @@ export const Form = ({ props, button }) => {
               <input
                 id={el.name}
                 type={el.type}
+                placeholder={`enter your ${el.name}`}
                 name={el.name}
-                onChange={handleChange}
+                onChange={handleInput}
               />
             </>
           )}
         </div>
       ))}
 
-      <button type="submit">{button}</button>
+      {/* Prevent default form submit refresh */}
+      <button type="button" onClick={handleCall}>
+        {button}
+      </button>
     </form>
   );
 };
