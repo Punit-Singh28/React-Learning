@@ -4,8 +4,8 @@ import Navbar from "../Components/Navbar";
 import Home from "../Pages/Home";
 import About from "../Pages/About";
 import UseEffect from "../Pages/UseEffect";
-import Login from "../Pages/Login";
-import Singup from "../Pages/Singup";
+import {Login} from "../Pages/Login";
+import {Singup} from "../Pages/Singup";
 import Error from "../Pages/Error";
 import {Form} from "../Components/Form";
 import {Greeting} from "../Pages/Greeting"
