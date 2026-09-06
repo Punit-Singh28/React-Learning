@@ -1,0 +1,16 @@
+table{
+    border: 1px outset gray;
+}
+
+tbody, thead{
+    border: 1px inset gray;
+}
+
+td, th{
+    border: 1px inset gray;
+}
+
+th{
+    background: tomato;
+    color: white;
+}
