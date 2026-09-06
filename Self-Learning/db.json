@@ -1,29 +1,16 @@
 {
   "user": [
     {
-      "email": "punitsingh280504@gmail.com",
-      "password": "123",
-      "id": "1"
-    },
-    {
-      "email": "punitsingh280504@gmail.com",
-      "password": "123",
-      "id": "2"
+      "email": "xyz22@gmail.com",
+      "password": "1234000ffdv",
+      "id": "1",
+      "isEdit": false
     },
     {
       "email": "punit@gmail.com",
       "password": "123",
-      "id": "3"
-    },
-    {
-      "email": "mehfoozkhan22@gmail.com",
-      "password": "Mehfooz@123",
-      "phone": "0000000000",
-      "address": "xyz hello hello 0000 mumbai west",
-      "gender": "male",
-      "city": "mumbai",
-      "country": "Indi",
-      "id": "gLBiqBD"
+      "id": "3",
+      "isEdit": false
     }
   ]
 }
