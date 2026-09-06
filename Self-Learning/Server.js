@@ -1,12 +1,14 @@
-// importing json-server library
-import jsonServer from 'json-server';
-const server = jsonServer.create();
-const router = jsonServer.router('db.json');
-const middlewares = jsonServer.defaults();
-const port = process.env.PORT || 3001; // you can use any port number here; i chose to use 3001
+// import json-server functions
+import { create, router, defaults } from "json-server";
+
+const server = create();
+const middlewares = defaults();
+const routes = router("db.json"); // points to your db.json file
+const port = process.env.PORT || 3001;
 
 server.use(middlewares);
-server.use(router);
+server.use(routes);
 
-server.listen(port);
-// npx json-server --watch db.json --port 3001
+server.listen(port, () => {
+  console.log(`JSON Server is running on port ${port}`);
+});
