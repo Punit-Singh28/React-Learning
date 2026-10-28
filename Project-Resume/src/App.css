@@ -1,9 +1,28 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
 .navbar-css{
   display: flex;
-  justify-content: center;
+  justify-content:space-between;
   align-items: center;
   padding: 10px;
   background-color: blueviolet;
-  color: antiquewhite;
+  color: white;
+}
+
+/* Navbar Css */
+
+/* Home Page css */
+
+.Page{
+  background-color: darkblue;
+  height: 1000px;
+  width: 100%;
   
 }
+
+
+/*  */

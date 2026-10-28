@@ -6,6 +6,7 @@ export const Navbar = () => {
   const Navigation = [
     { path: "/", element: "home" },
     { path: "/about", element: "about" },
+    { path: "/exp", element: "exp" },
   ];
 
   return (
@@ -14,8 +15,9 @@ export const Navbar = () => {
         {Navigation?.map(()=>())} */}
 
       <div className="navbar-css">
+        <img src="https://in.pinterest.com/urvirdhingra/death-note-wallpapers/"/>
         {Navigation?.map((el) => (
-          <NavLink key={el.path} to={el.path}>
+          <NavLink key={el.path} to={el.path} style={{color:'whitesmoke'}}>
             {el.element}
           </NavLink>
         ))}

@@ -1,0 +1,39 @@
+/* Navbar css */
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #0D1C42;
+  color: aliceblue;
+}
+
+.Navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #010736;
+  padding: 10px;
+  & > * {
+    text-decoration: none;
+    color: antiquewhite;
+    background-color: #010736;
+  }
+  &>.cart{
+    /* background-color: red; */
+    height: 10px;
+    width: 10px;
+    padding: 10px;
+  }
+}
+
+.home-cart{
+  /* display: grid; */
+  columns: 4;
+  column-gap: 5px;
+  row-gap: 10px;
+  &>.cart-data{
+    padding: 10px;
+    /* margin: 10px; */
+  }
+}
+
+
